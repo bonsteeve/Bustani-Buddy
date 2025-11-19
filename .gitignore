@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+*.log
+*.out
+GEMINI_API_KEY.txt
+.venv/
+__pycache__/
+*.pyc
+*.log
+*.out
+GEMINI_API_KEY.txt
