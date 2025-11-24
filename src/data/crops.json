@@ -1,0 +1,151 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-11-24",
+    "description": "Core Kenyan crops for Bustani Buddy",
+    "crop_count": 5,
+    "language_support": ["en", "sw"]
+  },
+  "crops": [
+    {
+      "id": "crop_001",
+      "name": "Maize",
+      "scientific_name": "Zea mays",
+      "local_name_swahili": "Mahindi",
+      "growing_season": "March-July (Long rains), October-December (Short rains)",
+      "description": "Kenya's primary staple food crop, grown by over 90% of farmers",
+      "varieties": [
+        {
+          "name": "Dent Maize",
+          "swahili": "Mahindi ya Kawaida",
+          "characteristics": "Most common variety for food"
+        },
+        {
+          "name": "Hybrid Maize",
+          "swahili": "Mahindi ya Kisasa", 
+          "characteristics": "Higher yield, drought resistant"
+        }
+      ],
+      "optimal_conditions": {
+        "rainfall_mm": "500-1200",
+        "temperature_c": "18-27",
+        "altitude_m": "0-2100",
+        "soil_ph": "6.0-7.5"
+      },
+      "regions": ["Central", "Rift Valley", "Eastern", "Western", "Nyanza"],
+      "harvest_months": ["July-August", "January-February"]
+    },
+    {
+      "id": "crop_002", 
+      "name": "Common Beans",
+      "scientific_name": "Phaseolus vulgaris",
+      "local_name_swahili": "Maharagwe",
+      "growing_season": "March-June (Long rains), October-January (Short rains)",
+      "description": "Important protein source and nitrogen-fixing legume crop",
+      "varieties": [
+        {
+          "name": "Climbing Beans",
+          "swahili": "Maharagwe ya Kupanda",
+          "characteristics": "Higher yield, needs support"
+        },
+        {
+          "name": "Bush Beans", 
+          "swahili": "Maharagwe ya Kichaka",
+          "characteristics": "Easier to manage, shorter season"
+        }
+      ],
+      "optimal_conditions": {
+        "rainfall_mm": "400-600",
+        "temperature_c": "16-25",
+        "altitude_m": "1000-2000",
+        "soil_ph": "6.0-7.0"
+      },
+      "regions": ["Central", "Eastern", "Rift Valley", "Western"],
+      "harvest_months": ["June-July", "December-January"]
+    },
+    {
+      "id": "crop_003",
+      "name": "Tomatoes", 
+      "scientific_name": "Solanum lycopersicum",
+      "local_name_swahili": "Nyanya",
+      "growing_season": "Year-round with irrigation, March-July for rain-fed",
+      "description": "High-value horticultural crop, major cash crop for smallholders",
+      "varieties": [
+        {
+          "name": "Determinate Tomatoes",
+          "swahili": "Nyanya za Kipindi",
+          "characteristics": "Bush type, concentrated harvest"
+        },
+        {
+          "name": "Indeterminate Tomatoes",
+          "swahili": "Nyanya za Mfululizo", 
+          "characteristics": "Climbing type, continuous harvest"
+        }
+      ],
+      "optimal_conditions": {
+        "rainfall_mm": "600-1250",
+        "temperature_c": "18-25",
+        "altitude_m": "500-2000",
+        "soil_ph": "6.0-7.0"
+      },
+      "regions": ["Central", "Rift Valley", "Eastern", "Coast"],
+      "harvest_months": ["May-August", "November-February"]
+    },
+    {
+      "id": "crop_004",
+      "name": "Kale (Sukuma Wiki)",
+      "scientific_name": "Brassica oleracea var. acephala",
+      "local_name_swahili": "Sukuma Wiki",
+      "growing_season": "Year-round",
+      "description": "Most popular leafy vegetable in Kenya, meaning 'stretch the week'",
+      "varieties": [
+        {
+          "name": "Collard Greens",
+          "swahili": "Sukuma Wiki ya Kawaida",
+          "characteristics": "Traditional variety, heat tolerant"
+        },
+        {
+          "name": "Improved Kale",
+          "swahili": "Sukuma Wiki Iliyoboreshwa",
+          "characteristics": "Higher yield, disease resistant"
+        }
+      ],
+      "optimal_conditions": {
+        "rainfall_mm": "300-800",
+        "temperature_c": "15-25",
+        "altitude_m": "0-2500",
+        "soil_ph": "6.0-7.5"
+      },
+      "regions": ["All regions - very adaptable"],
+      "harvest_months": ["Continuous harvest after 45-60 days"]
+    },
+    {
+      "id": "crop_005",
+      "name": "Sweet Potatoes",
+      "scientific_name": "Ipomoea batatas",
+      "local_name_swahili": "Viazi Vitamu",
+      "growing_season": "March-July (Long rains), September-December",
+      "description": "Drought-tolerant root crop, important food security crop",
+      "varieties": [
+        {
+          "name": "Orange-Fleshed Sweet Potato",
+          "swahili": "Viazi Vitamu vya Rangi ya Chungwa",
+          "characteristics": "High in Vitamin A, nutritious"
+        },
+        {
+          "name": "White-Fleshed Sweet Potato",
+          "swahili": "Viazi Vitamu vya Nyeupe",
+          "characteristics": "Traditional variety, good storage"
+        }
+      ],
+      "optimal_conditions": {
+        "rainfall_mm": "400-1000",
+        "temperature_c": "20-30",
+        "altitude_m": "0-2300",
+        "soil_ph": "5.5-7.5"
+      },
+      "regions": ["Coast", "Eastern", "Central", "Western", "Nyanza"],
+      "harvest_months": ["July-September", "December-February"]
+    }
+  ]
+}

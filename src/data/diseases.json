@@ -1,0 +1,263 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-11-24",
+    "description": "Common diseases affecting the 5 core Kenyan crops",
+    "disease_count": 12,
+    "language_support": ["en", "sw"]
+  },
+  "diseases": [
+    {
+      "id": "disease_001",
+      "name": "Maize Streak Virus",
+      "local_name_swahili": "Virusi ya Mistari ya Mahindi",
+      "affected_crops": ["crop_001"],
+      "severity": "high",
+      "symptoms": [
+        "Yellow streaks parallel to leaf veins",
+        "Stunted plant growth", 
+        "Reduced grain yield",
+        "Leaves may become completely yellow"
+      ],
+      "symptoms_swahili": [
+        "Mistari ya manjano sambamba na mishipa ya jani",
+        "Ukuaji mdogo wa mmea",
+        "Kupungua kwa mavuno",
+        "Majani yanaweza kuwa ya manjano kabisa"
+      ],
+      "transmission": "Leafhopper insects",
+      "peak_season": "March-May (Early rains)"
+    },
+    {
+      "id": "disease_002",
+      "name": "Maize Lethal Necrosis",
+      "local_name_swahili": "Ugonjwa wa Kufa kwa Mahindi",
+      "affected_crops": ["crop_001"],
+      "severity": "critical",
+      "symptoms": [
+        "Yellow streaking on leaves",
+        "Premature plant death",
+        "Poor grain filling",
+        "Complete crop failure in severe cases"
+      ],
+      "symptoms_swahili": [
+        "Mistari ya manjano kwenye majani",
+        "Kifo cha mapema cha mmea",
+        "Kujaza vibaya kwa nafaka",
+        "Kushindwa kabisa kwa mazao katika hali mbaya"
+      ],
+      "transmission": "Thrips and aphids",
+      "peak_season": "April-June"
+    },
+    {
+      "id": "disease_003",
+      "name": "Bean Common Mosaic Virus",
+      "local_name_swahili": "Virusi ya Alama za Maharagwe",
+      "affected_crops": ["crop_002"],
+      "severity": "medium",
+      "symptoms": [
+        "Mosaic pattern on leaves",
+        "Leaf distortion and curling",
+        "Reduced pod formation",
+        "Stunted plant growth"
+      ],
+      "symptoms_swahili": [
+        "Mchoro wa alama kwenye majani",
+        "Kuporomoka na kufinyangana kwa majani",
+        "Kupungua kwa uundaji wa maganda",
+        "Ukuaji mdogo wa mmea"
+      ],
+      "transmission": "Aphids and infected seeds",
+      "peak_season": "March-May"
+    },
+    {
+      "id": "disease_004",
+      "name": "Bean Root Rot",
+      "local_name_swahili": "Kuoza kwa Mizizi ya Maharagwe",
+      "affected_crops": ["crop_002"],
+      "severity": "high",
+      "symptoms": [
+        "Root discoloration and decay",
+        "Wilting despite adequate moisture",
+        "Yellow leaves starting from bottom",
+        "Poor nodulation"
+      ],
+      "symptoms_swahili": [
+        "Kubadilika rangi na kuoza kwa mizizi",
+        "Kunyauka licha ya unyevu wa kutosha",
+        "Majani ya manjano kuanzia chini",
+        "Viduduu finyu"
+      ],
+      "transmission": "Soil-borne fungi",
+      "peak_season": "High rainfall periods"
+    },
+    {
+      "id": "disease_005",
+      "name": "Tomato Late Blight",
+      "local_name_swahili": "Ugonjwa wa Kuoza kwa Nyanya",
+      "affected_crops": ["crop_003"],
+      "severity": "high",
+      "symptoms": [
+        "Dark spots on leaves and stems",
+        "White fungal growth on leaf undersides",
+        "Rapid plant death in humid conditions",
+        "Brown rot on fruits"
+      ],
+      "symptoms_swahili": [
+        "Madoa meusi kwenye majani na mti",
+        "Ukuaji wa ukungu mweupe chini ya majani",
+        "Kifo cha haraka cha mmea katika hali ya unyevu",
+        "Kuoza kwa kahawia kwenye matunda"
+      ],
+      "transmission": "Wind and water splash",
+      "peak_season": "Cool, humid conditions"
+    },
+    {
+      "id": "disease_006",
+      "name": "Tomato Bacterial Wilt",
+      "local_name_swahili": "Kunyauka kwa Bakteria kwa Nyanya",
+      "affected_crops": ["crop_003"],
+      "severity": "high",
+      "symptoms": [
+        "Sudden wilting of entire plant",
+        "Brown discoloration of stem interior",
+        "Slimy bacterial ooze from cut stems",
+        "No recovery despite watering"
+      ],
+      "symptoms_swahili": [
+        "Kunyauka kwa ghafla kwa mmea mzima",
+        "Rangi ya kahawia ndani ya mti",
+        "Utokaji wa ukungu wa bakteria kutoka kwenye mti uliokatwa",
+        "Kutopona licha ya kumwagilia"
+      ],
+      "transmission": "Soil and water",
+      "peak_season": "Hot, humid periods"
+    },
+    {
+      "id": "disease_007",
+      "name": "Kale Black Rot",
+      "local_name_swahili": "Kuoza Nyeusi kwa Sukuma Wiki",
+      "affected_crops": ["crop_004"],
+      "severity": "medium",
+      "symptoms": [
+        "V-shaped yellow lesions on leaf edges",
+        "Black veins extending toward stem",
+        "Leaf yellowing and dropping",
+        "Stunted growth"
+      ],
+      "symptoms_swahili": [
+        "Vidonda vya manjano vya umbo la V kwenye ukingo wa jani",
+        "Mishipa nyeusi inayoelekea kwenye mti",
+        "Majani kuwa ya manjano na kudondoka",
+        "Ukuaji mdogo"
+      ],
+      "transmission": "Water splash and insects",
+      "peak_season": "Warm, humid conditions"
+    },
+    {
+      "id": "disease_008",
+      "name": "Kale Clubroot",
+      "local_name_swahili": "Mizizi ya Rungu ya Sukuma Wiki",
+      "affected_crops": ["crop_004"],
+      "severity": "medium",
+      "symptoms": [
+        "Swollen, distorted roots",
+        "Stunted above-ground growth",
+        "Yellowing and wilting",
+        "Poor head formation"
+      ],
+      "symptoms_swahili": [
+        "Mizizi iliyovimba na kupotoshwa",
+        "Ukuaji mdogo wa sehemu ya juu",
+        "Kuwa manjano na kunyauka",
+        "Uundaji mbaya wa kichwa"
+      ],
+      "transmission": "Soil-borne pathogen",
+      "peak_season": "Cool, wet conditions"
+    },
+    {
+      "id": "disease_009",
+      "name": "Sweet Potato Virus Disease",
+      "local_name_swahili": "Ugonjwa wa Virusi wa Viazi Vitamu",
+      "affected_crops": ["crop_005"],
+      "severity": "high",
+      "symptoms": [
+        "Mosaic patterns on leaves",
+        "Leaf distortion and puckering",
+        "Stunted vine growth",
+        "Reduced tuber size and quality"
+      ],
+      "symptoms_swahili": [
+        "Mifumo ya alama kwenye majani",
+        "Kuporomoka na kufinyangana kwa majani",
+        "Ukuaji mdogo wa mishipa",
+        "Kupungua kwa ukubwa na ubora wa mizizi"
+      ],
+      "transmission": "Whiteflies and infected cuttings",
+      "peak_season": "Dry seasons with high whitefly activity"
+    },
+    {
+      "id": "disease_010",
+      "name": "Sweet Potato Weevil",
+      "local_name_swahili": "Mdudu wa Viazi Vitamu",
+      "affected_crops": ["crop_005"],
+      "severity": "medium",
+      "symptoms": [
+        "Small holes in tubers",
+        "Tunneling damage in roots",
+        "Bitter taste in affected tubers",
+        "Vine wilting from root damage"
+      ],
+      "symptoms_swahili": [
+        "Mashimo madogo kwenye mizizi",
+        "Uharibifu wa kutungulia kwenye mizizi",
+        "Ladha chungu kwenye mizizi iliyoathiriwa",
+        "Kunyauka kwa mishipa kutokana na uharibifu wa mizizi"
+      ],
+      "transmission": "Adult weevils laying eggs",
+      "peak_season": "Dry periods"
+    },
+    {
+      "id": "disease_011",
+      "name": "Anthracnose (General)",
+      "local_name_swahili": "Ugonjwa wa Madoa",
+      "affected_crops": ["crop_002", "crop_003"],
+      "severity": "medium",
+      "symptoms": [
+        "Circular dark spots on leaves",
+        "Spots may have light centers",
+        "Fruit rot in advanced stages",
+        "Defoliation in severe cases"
+      ],
+      "symptoms_swahili": [
+        "Madoa ya mviringo meusi kwenye majani",
+        "Madoa yanaweza kuwa na vipimo vya mwanga",
+        "Kuoza kwa matunda katika hatua za juu",
+        "Kudondoka kwa majani katika hali mbaya"
+      ],
+      "transmission": "Water splash and wind",
+      "peak_season": "Warm, humid periods"
+    },
+    {
+      "id": "disease_012",
+      "name": "Powdery Mildew",
+      "local_name_swahili": "Ukungu Mweupe",
+      "affected_crops": ["crop_003", "crop_004"],
+      "severity": "low",
+      "symptoms": [
+        "White powdery coating on leaves",
+        "Yellowing of affected areas",
+        "Reduced photosynthesis",
+        "Premature leaf senescence"
+      ],
+      "symptoms_swahili": [
+        "Ukungu mweupe kwenye majani",
+        "Kuwa manjano kwa maeneo yaliyoathiriwa",
+        "Kupungua kwa photosynthesis",
+        "Kuzeeka kwa mapema kwa majani"
+      ],
+      "transmission": "Airborne spores",
+      "peak_season": "Dry periods with high humidity"
+    }
+  ]
+}
