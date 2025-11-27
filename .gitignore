@@ -29,6 +29,10 @@ docs/
 IMPLEMENTATION_PLAN.md
 TASK_TRACKER.md
 TASK_*.md
+AGENT_ARCHITECTURE_OVERVIEW.md
+CLEANUP_COMPLETE.md
+PROGRESS_STATUS.md
+*implementation*.md
 
 # IDE and editor files
 .vscode/
