@@ -25,17 +25,8 @@ obj MasterDiagnosis {
     has market_intelligence: str;
 }
 
-# Session management result
-obj DiagnosisSession {
-    has session_id: str;
-    has status: str; 
-    has response_message: str;
-    has error_handled: bool;
-}
-
-# Semantic function definitions
+# Semantic function definition
 sem MasterDiagnosis = "Orchestrate complete agricultural disease diagnosis by analyzing crop symptoms, image details, and regional context. Coordinate all diagnostic agents to provide farmers with accurate disease identification, confidence scoring, treatment recommendations, and prevention advice suitable for Kenyan farming conditions.";
-sem DiagnosisSession = "Handle farmer diagnosis sessions with robust error management, user guidance, and session state tracking for agricultural disease diagnosis system";
 
 # True agent coordination functions
 def orchestrate_agents_workflow(crop: str, symptoms: str, image_details: str, region: str) -> MasterDiagnosis {
@@ -67,16 +58,21 @@ def orchestrate_agents_workflow(crop: str, symptoms: str, image_details: str, re
     );
 }
 
-# Master Executor Agent Walker  
+# Master Executor Agent Walker - Clean JAC integration
 walker ExecutorAgent {
-    has crop_type: str;
-    has symptoms_text: str;
-    has image_description: str;
-    has region_name: str;
+    has crop_type: str = "";
+    has symptoms_text: str = "";
+    has image_description: str = "";
+    has region_name: str = "Central Kenya";
     
     # Main entry point for agricultural disease diagnosis
     can diagnose_crop_disease with entry {
-        result = orchestrate_agents_workflow(self.crop_type, self.symptoms_text, self.image_description, self.region_name);
+        result = orchestrate_agents_workflow(
+            self.crop_type, 
+            self.symptoms_text, 
+            self.image_description, 
+            self.region_name
+        );
         report result;
     }
 }
