@@ -138,12 +138,12 @@ cl {
                     retry_match = err_str.match("Please retry in ([0-9.]+)s");
                     if retry_match {
                         wait_time = Math.ceil(parseFloat(retry_match[1]));
-                        alert("AI Service Busy: Rate limit exceeded. Please wait " + wait_time + " seconds and try again.");
+                        alert("⚠️ AI Service Busy: Rate limit exceeded. Please wait " + wait_time + " seconds and try again.");
                     } else {
-                        alert("AI Service Busy: Rate limit exceeded. Please wait a minute and try again.");
+                        alert("⚠️ AI Service Busy: Rate limit exceeded. Please wait a minute and try again.");
                     }
                 } else {
-                    alert("Diagnosis Failed: " + err_str);
+                    alert("❌ Diagnosis Failed: " + err_str);
                 }
                 setIsLoading(False);
                 return;
