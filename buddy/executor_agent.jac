@@ -26,9 +26,9 @@ obj MasterDiagnosis {
 sem MasterDiagnosis = "Orchestrate complete agricultural disease diagnosis by analyzing crop symptoms, image details, and regional context. Coordinate all diagnostic agents to provide farmers with accurate disease identification, confidence scoring, treatment recommendations, and prevention advice suitable for Kenyan farming conditions.";
 
 # Agent coordination workflow
-def orchestrate_agents_workflow(crop: str, symptoms: str, image_details: str, region: str) -> MasterDiagnosis {
-    # Step 1: Multimodal disease diagnosis
-    diagnosis_result = diagnose_multimodal_disease(image_details, symptoms, crop);
+def orchestrate_agents_workflow(crop: str, symptoms: str, image_base64: str, image_details: str, region: str) -> MasterDiagnosis {
+    # Step 1: Multimodal disease diagnosis (analyze actual image if provided)
+    diagnosis_result = diagnose_multimodal_disease(image_base64, image_details, symptoms, crop);
     
     # Step 2: Disease symptom analysis
     disease_analysis = analyze_disease_symptoms(crop, symptoms);
@@ -59,6 +59,7 @@ def orchestrate_agents_workflow(crop: str, symptoms: str, image_details: str, re
 walker ExecutorAgent {
     has crop_type: str = "";
     has symptoms_text: str = "";
+    has image_base64: str = "";
     has image_description: str = "";
     has region_name: str = "Central Kenya";
     
@@ -66,6 +67,7 @@ walker ExecutorAgent {
         result = orchestrate_agents_workflow(
             self.crop_type, 
             self.symptoms_text, 
+            self.image_base64,
             self.image_description, 
             self.region_name
         );

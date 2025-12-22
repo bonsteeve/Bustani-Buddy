@@ -11,6 +11,7 @@ import from executor_agent { orchestrate_agents_workflow }
 walker ExecutorAgent {
     has crop_type: str = "";
     has symptoms_text: str = "";
+    has image_base64: str = "";
     has image_description: str = "";
     has region_name: str = "";
     
@@ -18,8 +19,9 @@ walker ExecutorAgent {
         result = orchestrate_agents_workflow(
             self.crop_type, 
             self.symptoms_text, 
+            self.image_base64,
             self.image_description, 
-            self.region_name
+            self.region_name,
         );
         report result;
     }
@@ -112,36 +114,21 @@ cl {
         [is_loading, setIsLoading] = useState(False);
         [selected_language, setLanguage] = useState("en");
 
-        # Event handler for form submission
-        async def onDiagnosisSubmit(e: any) -> None {
-            e.preventDefault();
-            
-            # Set loading state
-            setIsLoading(True);
-            setDiagnosis({});
-            console.log("Starting diagnosis...");
-            
-            # Get form data
-            crop_type = document.getElementById("cropType").value;
-            symptoms_text = document.getElementById("imageDescription").value;
-            region_name = document.getElementById("regionName").value;
-            
-            # Validate inputs
-            if not crop_type or not symptoms_text {
-                alert("Please select a crop and describe the symptoms");
-                setIsLoading(False);
-                return;
+        # Helper function to convert file to base64
+        # Creates the conversion function inline using eval
+        async def convertFileToBase64Helper(file: any) -> str {
+            # Initialize the function if it doesn't exist
+            if not window.convertFileToBase64 {
+                # Create function using eval to work around JAC's Promise limitations
+                eval_code = "window.convertFileToBase64 = function(file) { return new Promise(function(resolve, reject) { var reader = new FileReader(); reader.onload = function(e) { var r = e.target.result; if (r.indexOf(',') > 0) r = r.split(',')[1]; resolve(r); }; reader.onerror = reject; reader.readAsDataURL(file); }); };";
+                eval(eval_code);
             }
-            
-            # Call backend walker via Jac spawn
-            console.log("About to spawn ExecutorAgent...");
-            
-            data = await root spawn ExecutorAgent(
-                crop_type=crop_type,
-                symptoms_text=symptoms_text,
-                image_description=symptoms_text,
-                region_name=region_name
-            );
+            # Use the function
+            return await window.convertFileToBase64(file);
+        }
+
+        # Helper function to process diagnosis response
+        async def processDiagnosisResponse(data: any) -> None {
             console.log("Spawn response received:", data);
             
             if data and data.error {
@@ -151,12 +138,12 @@ cl {
                     retry_match = err_str.match("Please retry in ([0-9.]+)s");
                     if retry_match {
                         wait_time = Math.ceil(parseFloat(retry_match[1]));
-                        alert("⚠️ AI Service Busy: Rate limit exceeded. Please wait " + wait_time + " seconds and try again.");
+                        alert("AI Service Busy: Rate limit exceeded. Please wait " + wait_time + " seconds and try again.");
                     } else {
-                        alert("⚠️ AI Service Busy: Rate limit exceeded. Please wait a minute and try again.");
+                        alert("AI Service Busy: Rate limit exceeded. Please wait a minute and try again.");
                     }
                 } else {
-                    alert("❌ Diagnosis Failed: " + err_str);
+                    alert("Diagnosis Failed: " + err_str);
                 }
                 setIsLoading(False);
                 return;
@@ -182,6 +169,51 @@ cl {
             setIsLoading(False);
             console.log("Diagnosis complete.");
             alert("Diagnosis received! Check console for results");
+        }
+
+        # Event handler for form submission
+        async def onDiagnosisSubmit(e: any) -> None {
+            e.preventDefault();
+            
+            # Set loading state
+            setIsLoading(True);
+            setDiagnosis({});
+            console.log("Starting diagnosis...");
+            
+            # Get form data
+            crop_type = document.getElementById("cropType").value;
+            symptoms_text = document.getElementById("imageDescription").value;
+            region_name = document.getElementById("regionName").value;
+            plant_media_input = document.getElementById("plantMedia");
+            
+            # Validate inputs
+            if not crop_type or not symptoms_text {
+                alert("Please select a crop and describe the symptoms");
+                setIsLoading(False);
+                return;
+            }
+            
+            # Process image file - convert to base64 for backend
+            # Note: Image processing will be handled via a custom JS utility
+            # For now, we'll implement a simple callback-based approach
+            image_base64 = "";
+            if plant_media_input and plant_media_input.files and plant_media_input.files.length > 0 {
+                image_file = plant_media_input.files[0];
+                console.log("Image file detected:", image_file.name);
+                # Convert using helper function (defined below)
+                image_base64 = await convertFileToBase64Helper(image_file);
+            }
+            
+            # Call backend walker via Jac spawn
+            console.log("About to spawn ExecutorAgent...");
+            data = await root spawn ExecutorAgent(
+                crop_type=crop_type,
+                symptoms_text=symptoms_text,
+                image_base64=image_base64,
+                image_description=symptoms_text,
+                region_name=region_name
+            );
+            processDiagnosisResponse(data);
         }
 
         return <div style={{
