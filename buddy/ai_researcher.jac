@@ -7,7 +7,7 @@ import from schema { Crop, Disease, Remedy, Region }
 import from byllm.lib { Model }
 
 # Initialize AI model for agricultural research
-glob llm = Model(model_name="gemini/gemini-2.0-flash-lite");
+glob llm = Model(model_name="vertex_ai/gemini-2.5-flash");
 
 # Structured data objects for AI responses
 obj CropRecommendations {

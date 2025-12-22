@@ -2,3 +2,6 @@ jaseci
 byllm
 jac-client
 react
+google-auth
+google-auth-oauthlib
+google-cloud-aiplatform

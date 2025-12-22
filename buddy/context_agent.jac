@@ -6,7 +6,7 @@ Integrates with Gemini AI for agricultural disease analysis and remedy recommend
 import from byllm.lib { Model }
 import from schema { Crop, Disease, Remedy, Region }
 
-glob context_llm = Model(model_name="gemini/gemini-2.0-flash-lite");
+glob context_llm = Model(model_name="vertex_ai/gemini-2.5-flash");
 
 # Disease analysis result structure
 obj DiseaseAnalysis {

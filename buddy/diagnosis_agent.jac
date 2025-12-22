@@ -5,7 +5,7 @@ Purpose: Core disease diagnosis combining image analysis + text symptoms
 import from byllm.lib { Model }
 import from schema { Crop, Disease, Remedy, Region }
 
-glob diagnosis_llm = Model(model_name="gemini/gemini-2.0-flash-lite");
+glob diagnosis_llm = Model(model_name="vertex_ai/gemini-2.5-flash");
 
 # Diagnosis result structure
 obj DiagnosisResult {
