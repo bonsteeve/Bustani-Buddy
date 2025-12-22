@@ -12,7 +12,7 @@ walker ExecutorAgent {
     has crop_type: str = "";
     has symptoms_text: str = "";
     has image_description: str = "";
-    has region_name: str = "Central Kenya";
+    has region_name: str = "";
     
     can diagnose_crop_disease with entry {
         result = orchestrate_agents_workflow(
