@@ -136,43 +136,40 @@ function app() {
     _useState6 = _slicedToArray(_useState5, 2),
     selected_language = _useState6[0],
     setLanguage = _useState6[1];
-  function onDiagnosisSubmit(_x) {
-    return _onDiagnosisSubmit.apply(this, arguments);
+  function convertFileToBase64Helper(_x) {
+    return _convertFileToBase64Helper.apply(this, arguments);
   }
-  function _onDiagnosisSubmit() {
-    _onDiagnosisSubmit = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(e) {
-      var crop_type, symptoms_text, region_name, data, err_str, retry_match, wait_time, report_data;
+  function _convertFileToBase64Helper() {
+    _convertFileToBase64Helper = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(file) {
+      var eval_code;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.n) {
           case 0:
-            e.preventDefault();
-            setIsLoading(true);
-            setDiagnosis({});
-            console.log("Starting diagnosis...");
-            crop_type = document.getElementById("cropType").value;
-            symptoms_text = document.getElementById("imageDescription").value;
-            region_name = document.getElementById("regionName").value;
-            if (!(!crop_type || !symptoms_text)) {
-              _context.n = 1;
-              break;
+            if (!window.convertFileToBase64) {
+              eval_code = "window.convertFileToBase64 = function(file) { return new Promise(function(resolve, reject) { var reader = new FileReader(); reader.onload = function(e) { var r = e.target.result; if (r.indexOf(',') > 0) r = r.split(',')[1]; resolve(r); }; reader.onerror = reject; reader.readAsDataURL(file); }); };";
+              eval(eval_code);
             }
-            alert("Please select a crop and describe the symptoms");
-            setIsLoading(false);
-            return _context.a(2);
+            _context.n = 1;
+            return window.convertFileToBase64(file);
           case 1:
-            console.log("About to spawn ExecutorAgent...");
-            _context.n = 2;
-            return __jacSpawn("ExecutorAgent", "", {
-              "crop_type": crop_type,
-              "symptoms_text": symptoms_text,
-              "image_description": symptoms_text,
-              "region_name": region_name
-            });
-          case 2:
-            data = _context.v;
+            return _context.a(2, _context.v);
+        }
+      }, _callee);
+    }));
+    return _convertFileToBase64Helper.apply(this, arguments);
+  }
+  function processDiagnosisResponse(_x2) {
+    return _processDiagnosisResponse.apply(this, arguments);
+  }
+  function _processDiagnosisResponse() {
+    _processDiagnosisResponse = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(data) {
+      var err_str, retry_match, wait_time, report_data;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.n) {
+          case 0:
             console.log("Spawn response received:", data);
             if (!(data && data.error)) {
-              _context.n = 3;
+              _context2.n = 1;
               break;
             }
             console.error("Backend Error:", data.error);
@@ -189,8 +186,8 @@ function app() {
               alert("\u274C Diagnosis Failed: " + err_str);
             }
             setIsLoading(false);
-            return _context.a(2);
-          case 3:
+            return _context2.a(2);
+          case 1:
             if (data && data.reports && data.reports.length > 0) {
               report_data = data.reports[0];
               console.log("Extracted report data:", report_data);
@@ -207,10 +204,66 @@ function app() {
             setIsLoading(false);
             console.log("Diagnosis complete.");
             alert("Diagnosis received! Check console for results");
-          case 4:
-            return _context.a(2);
+          case 2:
+            return _context2.a(2);
         }
-      }, _callee);
+      }, _callee2);
+    }));
+    return _processDiagnosisResponse.apply(this, arguments);
+  }
+  function onDiagnosisSubmit(_x3) {
+    return _onDiagnosisSubmit.apply(this, arguments);
+  }
+  function _onDiagnosisSubmit() {
+    _onDiagnosisSubmit = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(e) {
+      var crop_type, symptoms_text, region_name, plant_media_input, image_base64, image_file, data;
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.n) {
+          case 0:
+            e.preventDefault();
+            setIsLoading(true);
+            setDiagnosis({});
+            console.log("Starting diagnosis...");
+            crop_type = document.getElementById("cropType").value;
+            symptoms_text = document.getElementById("imageDescription").value;
+            region_name = document.getElementById("regionName").value;
+            plant_media_input = document.getElementById("plantMedia");
+            if (!(!crop_type || !symptoms_text)) {
+              _context3.n = 1;
+              break;
+            }
+            alert("Please select a crop and describe the symptoms");
+            setIsLoading(false);
+            return _context3.a(2);
+          case 1:
+            image_base64 = "";
+            if (!(plant_media_input && plant_media_input.files && plant_media_input.files.length > 0)) {
+              _context3.n = 3;
+              break;
+            }
+            image_file = plant_media_input.files[0];
+            console.log("Image file detected:", image_file.name);
+            _context3.n = 2;
+            return convertFileToBase64Helper(image_file);
+          case 2:
+            image_base64 = _context3.v;
+          case 3:
+            console.log("About to spawn ExecutorAgent...");
+            _context3.n = 4;
+            return __jacSpawn("ExecutorAgent", "", {
+              "crop_type": crop_type,
+              "symptoms_text": symptoms_text,
+              "image_base64": image_base64,
+              "image_description": symptoms_text,
+              "region_name": region_name
+            });
+          case 4:
+            data = _context3.v;
+            processDiagnosisResponse(data);
+          case 5:
+            return _context3.a(2);
+        }
+      }, _callee3);
     }));
     return _onDiagnosisSubmit.apply(this, arguments);
   }
