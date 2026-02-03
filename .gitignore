@@ -50,13 +50,3 @@ bustani-buddy-demo.html
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# JAC runtime files
-*.session
-*.session.users.json
-*.jir
-
-# Node.js and build artifacts
-node_modules/
-build/
-dist/

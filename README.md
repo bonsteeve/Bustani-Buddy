@@ -45,7 +45,7 @@ Bustani Buddy follows a **multi-agent architecture** built with Jaseci/JAC:
 
 - **Backend**: Jaseci/JAC programming language
 - **AI/ML**: Google Gemini 2.0 Flash Lite via byLLM
-- **Frontend**: React 19 with modern JavaScript
+- **Frontend**: React 19 with modern JavaScript (build with jac client)
 - **Build Tools**: Vite, Babel
 - **Styling**: Inline styles (modern CSS-in-JS approach)
 
