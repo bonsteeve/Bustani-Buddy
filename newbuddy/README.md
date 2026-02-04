@@ -148,6 +148,7 @@ Bustani-Buddy/
 - **Jaseci** ([Get one here](https://jaseci.org/))-latest version
 - **byllm** (latest version)
 - **jac-client** (latest version)
+- **Google Auth Libraries**: `google-auth`, `google-auth-oauthlib`, `google-auth-httplib2`
 - **Google Gemini API key** ([Get one here](https://aistudio.google.com/app/apikey))
 
 ### Installation
@@ -165,11 +166,29 @@ Bustani-Buddy/
 3. **Install Python dependencies** (if not already installed):
    ```bash
    pip install -r requirements.txt
+   
+   # Install Google Auth libraries (required for Vertex AI integration)
+   pip install google-auth google-auth-oauthlib google-auth-httplib2
    ```
 
 4. **Set your Gemini API key**:
    ```bash
    export GEMINI_API_KEY="your-gemini-api-key-here"
+   ```
+
+5. **Fix Google Auth Library (if needed)**:
+   
+   If you encounter `AttributeError: module 'google.auth' has no attribute 'default'`, the Google Auth library needs to be reinstalled:
+   
+   ```bash
+   # Uninstall corrupted Google Auth packages
+   pip uninstall google-auth google-auth-oauthlib google-auth-httplib2
+   
+   # Reinstall clean versions
+   pip install google-auth google-auth-oauthlib google-auth-httplib2
+   
+   # Or force reinstall if issues persist
+   pip install --force-reinstall --no-cache-dir google-auth google-auth-oauthlib google-auth-httplib2
    ```
 
 ### Running the Application
