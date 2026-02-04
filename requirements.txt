@@ -5,3 +5,4 @@ react
 google-auth
 google-auth-oauthlib
 google-cloud-aiplatform
+google-auth google-auth-oauthlib google-auth-httplib2
